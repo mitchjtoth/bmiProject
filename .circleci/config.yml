@@ -6,6 +6,9 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.8
+    environment:
+      PYTHONPATH: /bmiProject/BMIfinder
+      DJANGO_SETTINGS_MODULE: BMIfinder.settings
     steps:
       - checkout
       - run:
