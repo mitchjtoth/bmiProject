@@ -21,10 +21,10 @@ orbs:
           - checkout
           - run: python manage.py runserver
 workflows:
-  build_and_test:
+  build-and-test:
     jobs:
-      - build:
-      - my_name:
+      - build
+      - my_name
       - test:
           requires:
             - build
