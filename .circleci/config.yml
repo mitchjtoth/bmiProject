@@ -1,14 +1,9 @@
 version: '2.1'
 
-orbs:
-  coveralls: coveralls/coveralls@1.0.6
-
 jobs:
   build:
     docker:
       - image: circleci/python:3.8
-    environment:
-      COVERALLS_REPO_TOKEN: evVW9L2UwGkB2MDspVlvQGDLFRc1bnt8r
     steps:
       - checkout
       - run:
@@ -19,16 +14,10 @@ jobs:
             pip install -r requirements.txt
             pip install pytest
       - run:
-          name: Install npm
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y npm
-      - run:
           name: Run tests
           command: |
             . venv/bin/activate
             python manage.py test
-      - coveralls/upload
 
 workflows:
   build-and-test:
