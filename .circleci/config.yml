@@ -22,7 +22,6 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            python manage.py collectstatic --noinput
             pytest
             #python manage.py test
       - codecov/upload
