@@ -19,7 +19,7 @@ def test_calculate_bmi_normal():
     assert response.context['bmi'] == 23.4
     assert response.context['bmiResult'] == 'Your bmi is normal weight'
 
-def test_calculate_bmi():
+def test_calculate_bmi_norm():
     client = Client()
     response = client.post('', {'weight': '110.5', 'height_feet': '5', 'height_inches': '5'})
     assert response.status_code == 200

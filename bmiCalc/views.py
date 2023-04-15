@@ -13,6 +13,10 @@ def calculate_bmi(request):
         height_feet = request.POST.get('height_feet')
         height_inches = request.POST.get('height_inches')
         
+        if weight is None or height_feet is None or height_inches is None:
+            # send the response to the html template
+            return render(request, 'bmiCalc/calculate_bmi.html', {'message': 'Please try again with valid inputs'})
+
         # validate input
         try:
             # make sure inputs are the right data types
@@ -22,8 +26,8 @@ def calculate_bmi(request):
                 height_feet = int(height_feet)
             if height_inches is not None:
                 height_inches = int(height_inches)
-            else:
-                raise ValueError('Please try again with valid inputs')
+            # else:
+            #     raise ValueError('Please try again with valid inputs')
             # check if input's break any weird boundary
             if weight < 1 or weight > 1000 or weight is None or height_feet is None or height_feet < 1 or height_feet > 10 or height_inches is None or height_inches < 0 or height_inches > 11:
                 # raise a value error
