@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BMI Calculator</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>BMI Calculator</h1>
+		<form method="post">
+			{% csrf_token %}
+			<label for="weight">Weight (in pounds):</label>
+			<input type="text" name="weight" id="weight" required><br>
+
+			<label for="height_feet">Height (feet):</label>
+			<input type="text" name="height_feet" id="height_feet" required><br>
+
+			<label for="height_inches">Height (inches):</label>
+			<input type="text" name="height_inches" id="height_inches" required><br>
+			<input type="submit" value="Calculate BMI">
+		</form>
+		{% if bmi %}
+			<p>Your BMI is {{ bmi }}.</p>
+			<p>{{ bmiResult }}</p>
+		{% endif %}
+		{% if message %}
+			<p>{{ message }}</p>
+		{% endif %}
+	</div>
+</body>
+</html>
