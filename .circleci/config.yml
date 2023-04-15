@@ -1,30 +1,34 @@
 version: '2.1'
+
 orbs:
   coveralls: coveralls/coveralls@1.0.6
-  jobs:
-    build:
-      docker:
-        - image: circleci/node:10.0.0
-          steps:
-            - checkout
-        - run:
-            command: npm install && make test-coverage
-            name: Install and Make
-        - coveralls/upload
-    my_name:
-      name: say hello
-      command: echo "hello!"
-    test:
-      docker:
-        -image: circleci/node:10.0.0
-        steps:
-          - checkout
-          - run: python manage.py runserver
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.0.0
+    steps:
+      - checkout
+      - run:
+          command: npm install && make test-coverage
+          name: Install and Make
+      - coveralls/upload:
+          requires:
+            - build
+
+  test:
+    docker:
+      - image: circleci/node:10.0.0
+    steps:
+      - checkout
+      - run:
+          command: python manage.py runserver
+          name: Start Django Server
+
 workflows:
   build-and-test:
     jobs:
       - build
-      - my_name
       - test:
           requires:
             - build
