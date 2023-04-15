@@ -22,7 +22,7 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            pytest
+            pytest -v
             #python manage.py test
       - codecov/upload
 
