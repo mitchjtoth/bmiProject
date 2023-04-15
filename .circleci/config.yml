@@ -11,4 +11,16 @@ orbs:
             command: npm install && make test-coverage
             name: Install and Make
         - coveralls/upload
-workflows: null
+    test:
+      docker:
+        -image: circleci/node:10.0.0
+        steps:
+          - checkout
+          - run: python manage.py runserver
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
