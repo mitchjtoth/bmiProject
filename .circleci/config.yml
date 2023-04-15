@@ -19,7 +19,7 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            pytest --cov app
+            pytest
             #python manage.py test
       - codecov/upload
 
