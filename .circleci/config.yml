@@ -16,6 +16,10 @@ jobs:
           requires:
             - build
 
+  my_name:
+    name: say hello
+    command: echo "hello!"
+
   test:
     docker:
       - image: circleci/node:10.0.0
@@ -23,12 +27,12 @@ jobs:
       - checkout
       - run:
           command: python manage.py runserver
-          name: Start Django Server
 
 workflows:
   build-and-test:
     jobs:
       - build
+      - my_name
       - test:
           requires:
             - build
