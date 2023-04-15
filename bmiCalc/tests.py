@@ -13,6 +13,7 @@ def test_one():
 def test_calculate_bmi_normal():
     client = Client()
     response = client.post('', {'weight': '150', 'height_feet': '5', 'height_inches': '8'})
+    print(response.content)
     assert response.status_code == 200
     assert 'bmi' in response.context
     assert 'bmiResult' in response.context
@@ -22,6 +23,7 @@ def test_calculate_bmi_normal():
 def test_calculate_bmi_norm():
     client = Client()
     response = client.post('', {'weight': '110.5', 'height_feet': '5', 'height_inches': '5'})
+    print(response.content)
     assert response.status_code == 200
     assert 'bmi' in response.context
     assert 'bmiResult' in response.context
@@ -31,6 +33,7 @@ def test_calculate_bmi_norm():
 def test_calculate_bmi_obese():
     client = Client()
     response = client.post('', {'weight': '180', 'height_feet': '5', 'height_inches': '2'})
+    print(response.content)
     assert response.status_code == 200
     assert 'bmi' in response.context
     assert 'bmiResult' in response.context
