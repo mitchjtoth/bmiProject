@@ -20,8 +20,10 @@ def calculate_bmi(request):
             else:
                 raise ValueError()
             # check if input's break any weird boundary
-            if weight < 1 or weight > 1000 or height_feet is None or height_feet < 1 or height_feet > 10 or height_inches is None or height_inches < 0 or height_inches > 11:
+            if weight < 1 or weight > 1000 or weight is None or height_feet is None or height_feet < 1 or height_feet > 10 or height_inches is None or height_inches < 0 or height_inches > 11:
                 # raise a value error
+                raise ValueError()
+            elif type(weight) == str or type(height_inches) == str or type(height_feet) == str:
                 raise ValueError()
         except ValueError:
             # send the response to the html template
