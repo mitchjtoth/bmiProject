@@ -5,6 +5,31 @@ from django.test import Client
 from django.urls import reverse
 import pytest
 
+# class CalculateBMITests(TestCase):
+#     def test_get(self):
+#         response = self.client.get('')
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'bmiCalc/calculate_bmi.html')
+        
+#     def test_post_valid_input(self):
+#         response = self.client.post('', {'weight': '150', 'height_feet': '5', 'height_inches': '10'})
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'bmiCalc/calculate_bmi.html')
+#         self.assertContains(response, 'Your BMI is')
+        
+#     def test_post_invalid_input(self):
+#         response = self.client.post('', {'weight': '', 'height_feet': '5', 'height_inches': '10'})
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'bmiCalc/calculate_bmi.html')
+#         self.assertContains(response, 'Please try again with valid inputs')
+
+# from django.test import TestCase
+# from django.test import RequestFactory
+# from bmiCalc.views import calculate_bmi
+# from django.test import Client
+# from django.urls import reverse
+# import pytest
+
 # Create your tests here.
 def test_one():
 
