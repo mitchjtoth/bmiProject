@@ -6,36 +6,23 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/node:10.0.0
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:
-          name: Install and Make
-          command: npm install && make test-coverage
+          name: Install dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            python manage.py test
       - coveralls/upload
-
-  my_name:
-    docker:
-      - image: circleci/node:10.0.0
-    steps:
-      - run:
-          name: say hello
-          command: echo "hello!"
-
-  test:
-    docker:
-      - image: circleci/node:10.0.0
-    steps:
-      - checkout
-      - run:
-          name: Run server
-          command: python manage.py runserver
 
 workflows:
   build-and-test:
     jobs:
       - build
-      - my_name
-      - test:
-          requires:
-            - build
