@@ -1,4 +1,6 @@
 version: '2.1'
+orbs:
+  codecov: codecov/codecov@3
 
 jobs:
   build:
@@ -17,7 +19,9 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            python manage.py test
+            pytest --cov app
+            #python manage.py test
+      - codecov/upload
 
 workflows:
   build-and-test:
