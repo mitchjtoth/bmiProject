@@ -11,6 +11,9 @@ orbs:
             command: npm install && make test-coverage
             name: Install and Make
         - coveralls/upload
+    my_name:
+      name: say hello
+      command: echo "hello!"
     test:
       docker:
         -image: circleci/node:10.0.0
@@ -20,7 +23,8 @@ orbs:
 workflows:
   build_and_test:
     jobs:
-      - build
+      - build:
+      - my_name:
       - test:
           requires:
             - build
