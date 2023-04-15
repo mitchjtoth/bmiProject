@@ -47,5 +47,6 @@ def calculate_bmi(request):
         else:
             bmiResult = 'Your bmi is obese'
 
-        return render(request, 'bmiCalc/calculate_bmi.html', {'bmi': bmi, 'bmiResult': bmiResult})
+        context = {'bmi': bmi, 'bmiResult': bmiResult}
+        return render(request, 'bmiCalc/calculate_bmi.html', context)
     return render(request, 'bmiCalc/calculate_bmi.html')
