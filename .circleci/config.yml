@@ -10,15 +10,17 @@ jobs:
     steps:
       - checkout
       - run:
-          command: npm install && make test-coverage
           name: Install and Make
-      - coveralls/upload:
-          requires:
-            - build
+          command: |
+            npm install
+            make test-coverage
+      - coveralls/upload
 
   my_name:
-    name: say hello
-    command: echo "hello!"
+    steps:
+      - run:
+          name: say hello
+          command: echo "hello!"
 
   test:
     docker:
@@ -26,7 +28,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: python manage.py runserver
+          name: Start Django Server
+          command: |
+            python manage.py runserver
 
 workflows:
   build-and-test:
