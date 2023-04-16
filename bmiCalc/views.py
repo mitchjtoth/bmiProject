@@ -28,6 +28,9 @@ def calculate_bmi(request):
         except ValueError as e:
             # send the response to the html template
             return render(request, 'bmiCalc/calculate_bmi.html', {'message': str(e)})
+        except TypeError as e:
+            # send the response to the html template
+            return render(request, 'bmiCalc/calculate_bmi.html', {'message': 'Please try again with valid inputs'})
 
         # calculate the bmi using the given formula
         weight = float(weight) * 0.45
