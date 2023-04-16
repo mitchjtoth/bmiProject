@@ -1,8 +1,7 @@
 import django
-django.setup()
 from django.http import HttpResponse
 from django.shortcuts import render
-
+django.setup()
 from django.template import loader
 print(loader.get_template('bmiCalc/calculate_bmi.html'))
 
