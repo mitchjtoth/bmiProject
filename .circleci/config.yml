@@ -24,6 +24,10 @@ jobs:
             . venv/bin/activate
             pytest -v -s
             #python manage.py test
+      - run: pip install codecov
+      - run: pip install pytest pytest-cov codecov
+      - run: pytest --cov=./ --cov-report xml
+      - run: codecov
       - codecov/upload
 
 workflows:
