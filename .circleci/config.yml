@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: circleci/python:3.8
     environment:
-      CODECOV_TOKEN: ${{ secret.CODECOV_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       PYTHONPATH: /bmiProject/BMIfinder
       DJANGO_SETTINGS_MODULE: BMIfinder.settings
     steps:
