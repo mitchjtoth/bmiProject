@@ -18,11 +18,11 @@ jobs:
             python -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-            pip install pytest
       - run:
           name: Run tests
           command: |
             . venv/bin/activate
+            pip install pytest
             pytest -v -s
             #python manage.py test
       - run: pytest --cov=bmiCalc tests/
