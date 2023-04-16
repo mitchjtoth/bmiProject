@@ -26,7 +26,7 @@ jobs:
             #python manage.py test
       - run: pytest --cov=bmiCalc tests/
       - codecov/upload:
-          token: "${{ env.CODECOV_TOKEN }}"
+          token: env.CODECOV_TOKEN
 
 workflows:
   build-and-test:
