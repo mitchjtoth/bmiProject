@@ -24,18 +24,9 @@ jobs:
             . venv/bin/activate
             pytest -v -s
             #python manage.py test
-      - name: Run tests and collect coverage
-        run: |
-          pytest --cov=app tests/
-          coverage xml --omit="*/venv/*"
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage.xml
-      # - run: pytest --cov=myapp tests/
-      # - codecov/upload:
-      #     token: "${{ env.CODECOV_TOKEN }}"
+      - run: pytest --cov=bmiCalc tests/
+      - codecov/upload:
+          token: "${{ env.CODECOV_TOKEN }}"
 
 workflows:
   build-and-test:
