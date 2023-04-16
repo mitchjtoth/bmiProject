@@ -24,8 +24,7 @@ jobs:
             . venv/bin/activate
             pip install pytest
             pytest -v -s
-            #python manage.py test
-      - run: pytest --cov=bmiCalc bmiCalc/tests.py
+      - run: pytest --cov=bmiProject/bmiCalc tests.py
       - codecov/upload:
           token: CODECOV_TOKEN
 
