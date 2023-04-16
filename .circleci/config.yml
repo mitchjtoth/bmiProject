@@ -24,9 +24,11 @@ jobs:
             . venv/bin/activate
             pytest -v -s
             #python manage.py test
-      - run: pip install pytest pytest-cov codecov
-      - run: pytest --cov=./ --cov-report xml
-      - run: codecov
+      - run: pytest --cov=myapp tests/
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - codecov/upload
 
 workflows:
