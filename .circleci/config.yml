@@ -25,7 +25,7 @@ jobs:
             pytest -v -s
             #python manage.py test
       - run: pytest --cov=myapp tests/
-      - 'codecov/codecov-action@v3':
+      - codecov/upload:
           token: ${{ secrets.CODECOV_TOKEN }}
 
 workflows:
