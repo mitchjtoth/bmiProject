@@ -25,7 +25,7 @@ jobs:
             pip install pytest
             pip install pytest-cov
             pytest -v -s
-      - run: pytest --cov=bmiProject/bmiCalc/tests.py
+      - run: pytest --cov=/bmiProject/BMIfinder /bmiCalc/tests.py
       - codecov/upload:
           token: CODECOV_TOKEN
 
